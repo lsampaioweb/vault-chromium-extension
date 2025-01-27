@@ -15,7 +15,7 @@
     "message": "Tools"
   },
   "page_password_generator": {
-    "message": "Password"
+    "message": "Password generator"
   },
   "page_login": {
     "message": "Login"
@@ -220,7 +220,7 @@
     "message": "Click to generate a random token."
   },
   "content_copied_to_clipboard": {
-    "message": "Content copied to the transfer area."
+    "message": "Content copied to the clipboard."
   },
   "label_generated_password": {
     "message": "Password"
@@ -250,7 +250,7 @@
     "message": "Credential Type"
   },
   "input_secret_name_placeholder": {
-    "message": "Ex: website.com.br"
+    "message": "Eg:  website.com.br"
   },
   "input_token": {
     "message": "Token"
@@ -337,13 +337,13 @@
     "message": "Key"
   },
   "input_wrap_key_placeholder": {
-    "message": "Enter the key name, eg password"
+    "message": "Enter the key name, eg: password"
   },
   "input_wrap_value": {
     "message": "Value"
   },
   "input_wrap_value_placeholder": {
-    "message": "Enter the key value, Ex: ABC123@"
+    "message": "Enter the key value, eg: ABC123@"
   },
   "input_wrap_json": {
     "message": "Key(s) and Value(s) in json format"
