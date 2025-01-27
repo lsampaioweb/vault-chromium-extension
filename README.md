@@ -32,8 +32,8 @@ The goal of this extension is to simplify credential management and improve team
 
 Thanks to the following people for their contributions to this project:
 
-- [lsampaioweb](https://github.com/lsampaioweb)
-- [blenolopes](https://github.com/blenolopes)
-- [diegosousa085](https://github.com/diegosousa085)
-- [dwatashi](https://github.com/dwatashi)
-- [figura78](https://github.com/figura78)
+- Luciano Sampaio - [lsampaioweb](https://github.com/lsampaioweb)
+- Bleno Lopes - [blenolopes](https://github.com/blenolopes)
+- Diego Sousa - [diegosousa085](https://github.com/diegosousa085)
+- Daniel Watashi - [dwatashi](https://github.com/dwatashi)
+- Ricardo Rollemberg - [figura78](https://github.com/figura78)
