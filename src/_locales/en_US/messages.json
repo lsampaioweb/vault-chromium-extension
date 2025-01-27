@@ -42,7 +42,7 @@
     "message": "Example: https://vault..."
   },
   "input_url_value": {
-    "message": "https://vault.lan.homelab"
+    "message": "https://vault.dev.homelab"
   },
   "input_auth_method": {
     "message": "Form of authentication"
