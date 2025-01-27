@@ -17,11 +17,6 @@ git clone https://github.com/lsampaioweb/vault-chromium-extension.git
 3. Click on **Load unpacked**.
 4. Select the `vault-chromium-extension/src` folder where the repository is cloned.
 
-### Firefox
-1. Open your browser and navigate to `about:debugging#/runtime/this-firefox`.
-2. Click on **Load Temporary Add-on**.
-3. Select the `manifest.json` file from the cloned repository.
-
 ## 3. Testing
 Once installed, the extension icon will appear in the browser toolbar. Click it to start using the application.
 
