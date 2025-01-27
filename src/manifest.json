@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_app_name__",
+  "description": "__MSG_app_description__",
+  "version": "1.0.0",
+  "default_locale": "en_US",
+  "icons": {
+    "16": "/images/icons/logo16.png",
+    "32": "/images/icons/logo32.png",
+    "48": "/images/icons/logo48.png",
+    "128": "/images/icons/logo128.png"
+  },
+  "action": {
+    "default_icon": "/images/icons/logo128.png",
+    "default_popup": "/html/secrets/list.html",
+    "default_title": "__MSG_app_name__"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "webNavigation",
+    "activeTab",
+    "scripting",
+    "storage",
+    "clipboardWrite",
+    "alarms"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "/js/browser/browser-polyfill.min.js",
+        "/js/browser/content.js"
+      ],
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "/js/libs/notification.js",
+        "/js/libs/html-replace.js",
+        "/js/libs/i18n.js",
+        "/js/libs/forms.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "/js/browser/background.js",
+    "type": "module"
+  }
+}

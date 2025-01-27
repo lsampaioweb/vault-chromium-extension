@@ -1,0 +1,375 @@
+{
+  "app_name": {
+    "message": "Gerenciador de Senhas"
+  },
+  "app_version": {
+    "message": "Versão: 1.0.0"
+  },
+  "app_description": {
+    "message": "Extensão para utilizar credenciais salvas no Hashicorp Vault."
+  },
+  "page_secrets": {
+    "message": "Credenciais"
+  },
+  "page_tools": {
+    "message": "Ferramentas"
+  },
+  "page_password_generator": {
+    "message": "Gerador de senha"
+  },
+  "page_login": {
+    "message": "Login"
+  },
+  "page_about": {
+    "message": "Sobre"
+  },
+  "page_test": {
+    "message": "Teste"
+  },
+  "input_search_secrets": {
+    "message": "Pesquisa"
+  },
+  "input_button_search": {
+    "message": "Pesquisar"
+  },
+  "input_new_secret": {
+    "message": "Novo"
+  },
+  "input_url": {
+    "message": "Endereço do Vault"
+  },
+  "input_url_placeholder": {
+    "message": "Exemplo: https://vault..."
+  },
+  "input_url_value": {
+    "message": "https://vault.lan.homelab"
+  },
+  "input_auth_method": {
+    "message": "Forma de autênticação"
+  },
+  "input_auth_method_ldap": {
+    "message": "Usuário e senha da rede"
+  },
+  "input_auth_method_userpass": {
+    "message": "Usuário e senha do Vault"
+  },
+  "input_search_placeholder": {
+    "message": "Nome ou parte do nome da credencial"
+  },
+  "input_username": {
+    "message": "Usuário"
+  },
+  "input_username_placeholder": {
+    "message": "Seu usuário do Vault, ex: e-mail"
+  },
+  "input_password": {
+    "message": "Senha"
+  },
+  "input_secret_comment": {
+    "message": "Comentário"
+  },
+  "input_button_login": {
+    "message": "Entrar"
+  },
+  "input_button_logout": {
+    "message": "Sair"
+  },
+  "form_empty_element": {
+    "message": "O campo '$1' é obrigatório."
+  },
+  "form_invalid_element": {
+    "message": "O valor '$2' não é válido para o campo '$1'."
+  },
+  "password_invalid_size": {
+    "message": "A senha precisa ter no mínimo 7 caracteres."
+  },
+  "http_request_error": {
+    "message": "Servidor não encontrado: '$1'."
+  },
+  "message_connecting": {
+    "message": "Conectando..."
+  },
+  "vault_login_failed": {
+    "message": "Usuário ou senha inválidos."
+  },
+  "already_loggedin_url": {
+    "message": "Endereço: '$1'."
+  },
+  "already_loggedin_user": {
+    "message": "Usuário: '$1'."
+  },
+  "vault_current_token_failed": {
+    "message": "Falha ao consultar o token atual."
+  },
+  "vault_renew_token_failed": {
+    "message": "Falha ao renovar o token atual."
+  },
+  "vault_logout_failed": {
+    "message": "Falha ao sair do sistema. Tente novamente."
+  },
+  "vault_secret_delete_failed": {
+    "message": "Falha ao apagar a credencial '$1'."
+  },
+  "vault_secret_add_failed": {
+    "message": "Falha ao salvar a credencial."
+  },
+  "vault_engines_failed": {
+    "message": "Falha ao consultar os cofres."
+  },
+  "vault_forbidden_failed": {
+    "message": "Token expirado. Por favor, faça login novamente."
+  },
+  "failed_to_query_tab": {
+    "message": "Falha ao tentar acessar as informações da aba atual."
+  },
+  "button_insert_secrets_in_form": {
+    "message": "Adicionar ao formulário."
+  },
+  "button_copy_user": {
+    "message": "Copiar usuário."
+  },
+  "button_copy_password": {
+    "message": "Copiar senha."
+  },
+  "button_copy_token": {
+    "message": "Copiar token."
+  },
+  "button_edit_secret": {
+    "message": "Editar credencial."
+  },
+  "button_delete_secret": {
+    "message": "Excluir credencial."
+  },
+  "usernameKeys": {
+    "message": "user,usuario,username,user_name,login,cpf,email"
+  },
+  "passwordKeys": {
+    "message": "pass,senha,password,secret"
+  },
+  "tokenKeys": {
+    "message": "token,key,chave"
+  },
+  "commentKeys": {
+    "message": "comment,comments,comentario,comentarios,comentário,comentários"
+  },
+  "usernameInputsToFind": {
+    "description": "The name*='string' can select all inputs whose searched attribute contains the string. The 'i' is for case insensitivity.",
+    "message": "input[name*='usuario' i],input[name*='user' i],input[name*='username' i],input[name*='user_name' i],input[name*='login' i],input[name*='userid' i],input[name*='email' i],input[name*='mail' i],input[name*='cpf' i],input[name*='accesskey' i],input[name*='accountId' i],input[type='email' i],input[type='text' i]"
+  },
+  "passwordInputsToFind": {
+    "message": "input[type='password' i]"
+  },
+  "tokenInputsToFind": {
+    "message": "input[name*='token' i],input[name*='key' i],input[name*='chave' i],input[name*='accesskey' i],input[name*='accountId' i],input[type='password' i],input[type='text' i]"
+  },
+  "label_user": {
+    "message": "Usuário"
+  },
+  "label_token": {
+    "message": "Token"
+  },
+  "personalEngines": {
+    "message": "pessoal/,personal/"
+  },
+  "input_password_generator_size": {
+    "message": "Número de caracteres da senha"
+  },
+  "input_password_generator_size_value": {
+    "message": "20"
+  },
+  "input_password_generator_size_placeholder": {
+    "message": "Valores aceitos são entre 1 e 40"
+  },
+  "input_password_generator_special_characters": {
+    "message": "Utilizar caracteres especiais"
+  },
+  "input_password_generator_lowercase": {
+    "message": "Utilizar letras minúsculas"
+  },
+  "input_password_generator_uppercase": {
+    "message": "Utilizar letras maiúsculas"
+  },
+  "input_password_generator_numbers": {
+    "message": "Utilizar números"
+  },
+  "input_button_password_generator": {
+    "message": "Gerar"
+  },
+  "password_generator_at_least_one_option_must_be_selected": {
+    "message": "Pelo menos uma opção precisa ser selecionada."
+  },
+  "password_size_is_not_a_number": {
+    "message": "O número de caracteres deve ser um número."
+  },
+  "password_size_is_not_in_range": {
+    "message": "Valores aceitos para o número de caracteres são entre 1 e 40."
+  },
+  "window_crypto_undefined": {
+    "message": "A biblioteca de geração de senhas não é suportada pelo seu navegador."
+  },
+  "generated_password_toggle_view_title": {
+    "message": "Clique para exibir ou ocultar a senha."
+  },
+  "copy_to_clipboard_img_title": {
+    "message": "Clique para copiar para a área de transferência."
+  },
+  "generate_random_password": {
+    "message": "Clique para gerar uma senha aleatória."
+  },
+  "generate_random_token": {
+    "message": "Clique para gerar um token aleatório."
+  },
+  "content_copied_to_clipboard": {
+    "message": "Conteúdo copiado para a área de transferência."
+  },
+  "label_generated_password": {
+    "message": "Senha"
+  },
+  "value_yes": {
+    "message": "Sim"
+  },
+  "value_no": {
+    "message": "Não"
+  },
+  "confirm_delete_secret": {
+    "message": "Tem certeza que deseja apagar a credencial:\n\n'$1'? \n\nEsta ação não pode ser desfeita."
+  },
+  "delete_secret_successful": {
+    "message": "A credencial '$1' foi apagada com sucesso."
+  },
+  "input_secret_engine": {
+    "message": "Cofre"
+  },
+  "input_secret_path": {
+    "message": "Caminho"
+  },
+  "input_secret_name": {
+    "message": "Nome da credencial"
+  },
+  "label_secret_type": {
+    "message": "Tipo da credencial"
+  },
+  "input_secret_name_placeholder": {
+    "message": "ex: site.com.br"
+  },
+  "input_token": {
+    "message": "Token"
+  },
+  "input_secret_type_credential": {
+    "message": "Usuário e Senha"
+  },
+  "input_secret_type_token": {
+    "message": "Token"
+  },
+  "button_save": {
+    "message": "Salvar"
+  },
+  "button_cancel": {
+    "message": "Cancelar"
+  },
+  "message_saving": {
+    "message": "Salvando..."
+  },
+  "message_loading": {
+    "message": "Carregando..."
+  },
+  "fillCredentialsInPageSuccess": {
+    "message": "A credencial foi inserida com sucesso na página."
+  },
+  "fillCredentialsInPageFailed": {
+    "message": "Falha ao inserir a credencial na página."
+  },
+  "fillTokenInPageSuccess": {
+    "message": "O token foi inserido com sucesso na página."
+  },
+  "fillTokenInPageFailed": {
+    "message": "Falha ao inserir o token na página."
+  },
+  "encryptedValueCannotBeNull": {
+    "message": "O valor criptografado não pode ser nulo."
+  },
+  "encryptedVersionIsNotSupported": {
+    "message": "A versão '$1' da criptografia não é suportada."
+  },
+  "encryption_error": {
+    "message": "Erro ao criptografar."
+  },
+  "decryption_error": {
+    "message": "Erro ao descriptografar."
+  },
+  "page_tools_wrap": {
+    "message": "Compartilhar credencial"
+  },
+  "page_tools_unwrap": {
+    "message": "Recuperar credencial compartilhada"
+  },
+  "label_unwrap_hash": {
+    "message": "Credencial compartilhada (em formato hash)"
+  },
+  "unwrap_result": {
+    "message": "Credencial recuperada"
+  },
+  "input_unwrap_hash_placeholder": {
+    "message": "Formato: hvs.CAESI..."
+  },
+  "button_unwrap": {
+    "message": "Recuperar"
+  },
+  "unwrap_hash_invalid_size": {
+    "message": "O hash não possui o tamanho correto."
+  },
+  "unwrap_hash_invalid_format": {
+    "message": "O hash não está no formato correto."
+  },
+  "message_unwrapping": {
+    "message": "Recuperando dados..."
+  },
+  "vault_unwrap_failed": {
+    "message": "O hash não foi encontrado ou já foi utilizado."
+  },
+  "input_wrap_type_simple": {
+    "message": "Simples"
+  },
+  "input_wrap_type_complex": {
+    "message": "Avançado"
+  },
+  "input_wrap_key": {
+    "message": "Chave"
+  },
+  "input_wrap_key_placeholder": {
+    "message": "Digite o nome da chave, ex: senha"
+  },
+  "input_wrap_value": {
+    "message": "Valor"
+  },
+  "input_wrap_value_placeholder": {
+    "message": "Digite o valor da chave, ex: abc123@"
+  },
+  "input_wrap_json": {
+    "message": "Chave(s) e Valor(es) em formato json"
+  },
+  "input_wrap_ttl": {
+    "message": "Tempo de validade do hash (em minutos)"
+  },
+  "button_wrap": {
+    "message": "Criptografar"
+  },
+  "wrap_data_not_in_json_format": {
+    "message": "O conteúdo inserido não é um JSON válido."
+  },
+  "ttl_is_not_a_number": {
+    "message": "O tempo de validade precisa ser um número válido."
+  },
+  "ttl_is_not_in_range": {
+    "message": "O tempo de validade deve estar entre 1 e 1440 minutos (24 horas)."
+  },
+  "message_wrapping": {
+    "message": "Criptografando credencial..."
+  },
+  "vault_wrap_failed": {
+    "message": "Falha ao criptografar a credencial."
+  },
+  "wrap_result": {
+    "message": "Hash da credencial"
+  }
+}

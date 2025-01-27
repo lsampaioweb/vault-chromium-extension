@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>__MSG_app_name__</title>
+  <meta charset="utf-8" />
+  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="h1 title">__MSG_app_name__</h1>
+    </div>
+    <div class="container">
+      <nav role="navigation" class="menu" aria-label="Main Menu">
+        <span class="menu_links">
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+        </span>
+        <span class="menu_links">
+          <a href="/html/tools/index.html" class="link link--alt link--current"
+            aria-current="page">__MSG_page_tools__</a>
+        </span>
+        <span class="menu_links">
+          <a href="/html/login/index.html" class="link link--alt">__MSG_page_login__</a>
+        </span>
+        <span class="menu_links">
+          <a href="/html/about/index.html" class="link link--alt">__MSG_page_about__</a>
+        </span>
+        <span id="page_test" class="menu_links hidden">
+          <a href="/html/test/index.html" class="link link--alt">__MSG_page_test__</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="form-container">
+
+      <div id="notify"></div>
+
+      <div>
+        <label class="label" for="numbers_yes">
+          __MSG_input_password_generator_numbers__: <br />
+          <label for="numbers_yes">__MSG_value_yes__</label>
+          <input type="radio" name="numbers" id="numbers_yes" checked="checked" value="true" />
+
+          <label for="numbers_no">__MSG_value_no__</label>
+          <input type="radio" name="numbers" id="numbers_no" value="false" />
+        </label>
+
+        <label class="label" for="lowercase_yes">
+          __MSG_input_password_generator_lowercase__: <br />
+          <label for="lowercase_yes">__MSG_value_yes__</label>
+          <input type="radio" name="lowercase" id="lowercase_yes" checked="checked" value="1" />
+
+          <label for="lowercase_no">__MSG_value_no__</label>
+          <input type="radio" name="lowercase" id="lowercase_no" value="0" />
+        </label>
+
+        <label class="label" for="uppercase_yes">
+          __MSG_input_password_generator_uppercase__: <br />
+          <label for="uppercase_yes">__MSG_value_yes__</label>
+          <input type="radio" name="uppercase" id="uppercase_yes" checked="checked" value="1" />
+
+          <label for="uppercase_no">__MSG_value_no__</label>
+          <input type="radio" name="uppercase" id="uppercase_no" value="0" />
+        </label>
+
+        <label class="label" for="special_characters_yes">
+          __MSG_input_password_generator_special_characters__:<br />
+          <label for="special_characters_yes">__MSG_value_yes__</label>
+          <input type="radio" name="special_characters" id="special_characters_yes" checked="checked" value="1" />
+
+          <label for="special_characters_no">__MSG_value_no__</label>
+          <input type="radio" name="special_characters" id="special_characters_no" value="0" />
+        </label>
+
+        <label class="label" for="size">
+          __MSG_input_password_generator_size__:
+          <input type="text" class="input" name="size" id="size" autocomplete="off"
+            placeholder="__MSG_input_password_generator_size_placeholder__"
+            value="__MSG_input_password_generator_size_value__" />
+        </label>
+
+        <div class="center">
+          <input type="submit" class="button button_primary" id="button_password_generator"
+            value="__MSG_input_button_password_generator__" />
+        </div>
+      </div>
+
+      <input type="hidden" id="hidden_generated_password" value="" />
+      <div class="center">
+        <label class="label center hidden" id="label_generated_password" for="hidden_generated_password">
+          __MSG_label_generated_password__:
+          <span class="generated_password" id="generated_password"
+            title="__MSG_copy_to_clipboard_img_title__"></span>
+          <img id="generated_password_toggle_view" src="/images/icons/show-password.svg" class="moveable_button"
+            title="__MSG_generated_password_toggle_view_title__" alt="__MSG_generated_password_toggle_view_title__" />
+          <img id="generated_password_copy_img" src="/images/icons/copy-text.png" class="moveable_button"
+            title="__MSG_copy_to_clipboard_img_title__" alt="__MSG_copy_to_clipboard_img_title__" />
+        </label>
+      </div>
+
+    </div>
+
+  </main>
+  <div class="footer">__MSG_app_version__</div>
+
+  <script type="module" src="/js/common.js"></script>
+  <script type="module" src="/js/tools/generator.js"></script>
+</body>
+
+</html>

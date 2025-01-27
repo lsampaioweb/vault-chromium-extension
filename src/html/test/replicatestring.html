@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>__MSG_app_name__</title>
+  <meta charset="utf-8" />
+  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="h1 title">__MSG_app_name__</h1>
+    </div>
+    <div class="container">
+      <nav role="navigation" class="menu" aria-label="Main Menu">
+        <span class="menu_links">
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+        </span>
+        <span class="menu_links">
+          <a href="/html/tools/index.html" class="link link--alt">__MSG_page_tools__</a>
+        </span>
+        <span class="menu_links">
+          <a href="/html/login/index.html" class="link link--alt">__MSG_page_login__</a>
+        </span>
+        <span class="menu_links">
+          <a href="/html/about/index.html" class="link link--alt">__MSG_page_about__</a>
+        </span>
+        <span id="page_test" class="menu_links hidden">
+          <a href="/html/test/index.html" class="link link--alt link--current" aria-current="page">__MSG_page_test__</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="form-container">
+
+      <div id="notify"></div>
+
+      <div id="form">
+        <label class="label" for="input">
+          Texto:
+          <input type="text" class="input" name="input" id="input" value="MeuTexto" />
+        </label>
+
+        <label class="label" for="input_size">
+          Tamanho:
+          <input type="text" class="input" name="input_size" id="input_size" value="10" />
+        </label>
+
+        <div class="center">
+          <input type="submit" class="button button_primary" id="button_test" value="Test" />
+          <input type="submit" class="button button_primary" id="button_test_all" value="Test all" />
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div class="footer">__MSG_app_version__</div>
+
+  <script type="module" src="/js/common.js"></script>
+  <script type="module" src="/js/test/replicatestring.js"></script>
+</body>
+
+</html>
