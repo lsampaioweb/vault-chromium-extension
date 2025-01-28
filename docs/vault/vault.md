@@ -69,18 +69,18 @@ If you don’t have a Vault instance set up yet, you can quickly get started by 
     auth_userpass_150b3b70
     ```
 
-    You should include this accessor string in the policy file `docs/vault/policy/personal.hcl` where applicable.
+    You should include this accessor string in the policy file [docs/vault/policy/personal.hcl](policy/personal.hcl) where applicable.
 
 ### Create Policies
 
   Policies define which resources (paths) users can access and their actions (capabilities).
 
-  - Policy for Personal Secrets
+  - Policy for [Personal](policy/personal.hcl) Secrets
     ```bash
     vault policy write personal docs/vault/policy/personal.hcl
     ```
 
-  - Policy for Team Secrets (For user1 and user3)
+  - Policy for [Team](policy/team.hcl) Secrets
     ```bash
     vault policy write team docs/vault/policy/team.hcl
     ```
