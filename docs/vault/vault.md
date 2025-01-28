@@ -1,6 +1,9 @@
 ### Vault Configurations
 
-To enable the extension to interact with Vault, specific policies need to be created. These policies grant permissions for the extension to list, read, create, update, and delete secrets securely.
+To enable this browser extension to interact with Vault, you need to have a running and properly configured Vault instance.
+
+If you don’t have a Vault instance set up yet, you can quickly get started by using our [Vault](https://github.com/lsampaioweb/vault-docker) project. This repository provides an easy way to run a Vault container with all the necessary configurations.
+
 
 ### Vault Configuration
 
@@ -11,8 +14,8 @@ To enable the extension to interact with Vault, specific policies need to be cre
 
   - Log in to Vault:
     ```bash
-    # Add '-tls-skip-verify' if using self-signed certificate
-    vault login -tls-skip-verify
+    # Add '-tls-skip-verify' if using self-signed certificate.
+    vault login
     ```
 
 ### Enable and Configure KV Secrets Engines
@@ -21,13 +24,13 @@ To enable the extension to interact with Vault, specific policies need to be cre
     ```bash
     # Enable a KV secrets engine for personal secrets.
     # If you omit the -version parameter, Vault defaults to KV version 1.
-    vault secrets enable -path=personal -version=2 kv
+    vault secrets enable -path=personal -version=2 -description="Secrets specific to individual users" kv
     ```
 
   - Team/Shared Secrets (KV)
     ```bash
     # Enable a KV secrets engine for team/shared secrets.
-    vault secrets enable -path=team -version=2 kv
+    vault secrets enable -path=team -version=2 -description="Shared secrets for teams or groups" kv
 
     # (Optional) Verify the secrets engine is enabled.
     vault secrets list
@@ -42,26 +45,31 @@ To enable the extension to interact with Vault, specific policies need to be cre
     vault auth enable userpass
 
     # Create user1
-    vault write auth/userpass/users/user1 password="???"
+    vault write auth/userpass/users/user1 password="userpass"
 
     # Create user2
-    vault write auth/userpass/users/user2 password="???"
+    vault write auth/userpass/users/user2 password="userpass"
 
     # Create user3
-    vault write auth/userpass/users/user3 password="???"
+    vault write auth/userpass/users/user3 password="userpass"
     ```
 
-### Get the Mount Accessor for `userpass`
+### Retrieve the Mount Accessor for `userpass`
 
-  - To get the mount accessor for the userpass authentication method, use the following command:
+  - To retrieve the mount accessor for the `userpass` authentication method, run the following command:
+
     ```bash
     vault auth list -format=json | jq -r '.["userpass/"].accessor'
     ```
 
-  - This will output a string, which is the mount accessor for the userpass auth method. For example:
+  - This command will output a string representing the mount accessor for the `userpass` auth method, which you’ll need when defining policies.
+
+    For example, the output might look like this:
     ```bash
-    auth_userpass_0c6e2b74
+    auth_userpass_150b3b70
     ```
+
+    You should include this accessor string in the policy file `docs/vault/policy/personal.hcl` where applicable.
 
 ### Create Policies
 
@@ -69,48 +77,12 @@ To enable the extension to interact with Vault, specific policies need to be cre
 
   - Policy for Personal Secrets
     ```bash
-    # File: policy/personal.hcl
-    # Access to the metadata of the user's personal secrets.
-    # This allows users to list their secret paths, create new metadata, and modify or delete existing metadata.
-    path "personal/metadata/{{identity.entity.aliases.auth_userpass_0c6e2b74.name}}/*" {
-      capabilities = ["create", "read", "update", "delete", "list"]
-    }
-
-    # Access to the actual data of the user's personal secrets.
-    # This allows users to create, read, update, delete, and list the secrets stored in their namespace.
-    path "personal/data/{{identity.entity.aliases.auth_userpass_0c6e2b74.name}}/*" {
-      capabilities = ["create", "read", "update", "delete", "list"]
-    }
-
-    # Permission to delete secrets by marking them for deletion.
-    # The user can specify which secret paths to delete in their personal namespace.
-    path "personal/delete/{{identity.entity.aliases.auth_userpass_0c6e2b74.name}}/*" {
-      capabilities = ["update"]
-    }
-
-    # Permission to undelete previously deleted secrets.
-    # This allows the user to recover secrets that were marked for deletion.
-    path "personal/undelete/{{identity.entity.aliases.auth_userpass_0c6e2b74.name}}/*" {
-      capabilities = ["update"]
-    }
-    ```
-
-    Write this policy to Vault:
-    ```bash
-    vault policy write personal policy/personal.hcl
+    vault policy write personal docs/vault/policy/personal.hcl
     ```
 
   - Policy for Team Secrets (For user1 and user3)
     ```bash
-    # File: policy/team.hcl
-    path "team/*" {
-      capabilities = ["create", "read", "update", "delete", "list"]
-    }
-    ```
-
-    Write this policy to Vault:
-    ```bash
-    vault policy write team policy/team.hcl
+    vault policy write team docs/vault/policy/team.hcl
     ```
 
 ### Assign Policies to Users
