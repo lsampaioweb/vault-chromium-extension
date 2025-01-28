@@ -1,13 +1,13 @@
 # Access to the metadata of the user's personal secrets.
 # This allows users to list their secret paths, create new metadata, and modify or delete existing metadata.
 path "personal/metadata/{{ identity.entity.aliases.auth_userpass_150b3b70.name }}/*" {
-  capabilities = ["create", "read", "update", "delete", "list"]
+  capabilities = ["list", "read", "create", "update", "delete"]
 }
 
 # Access to the actual data of the user's personal secrets.
 # This allows users to create, read, update, delete, and list the secrets stored in their namespace.
 path "personal/data/{{ identity.entity.aliases.auth_userpass_150b3b70.name }}/*" {
-  capabilities = ["create", "read", "update", "delete", "list"]
+  capabilities = ["list", "read", "create", "update", "delete"]
 }
 
 # Permission to delete secrets by marking them for deletion.

@@ -1,3 +1,3 @@
 path "team/*" {
-  capabilities = ["create", "read", "update", "delete", "list"]
+  capabilities = ["list", "read", "create", "update", "delete"]
 }
