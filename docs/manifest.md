@@ -2,7 +2,7 @@
 
 This document provides an in-depth explanation of the `manifest.json` file for our Extension. It details the purpose and necessity of each configuration section, ensuring clarity for developers and contributors looking to understand or modify the extension's behavior.
 
-## Host Permissions
+### Host Permissions
 
 Defines the set of URLs the extension is allowed to interact with directly.
 
@@ -14,7 +14,7 @@ Defines the set of URLs the extension is allowed to interact with directly.
 
     This allows the extension to function across various pages, enabling features like injecting content scripts, monitoring navigation events, and managing Vault-related tasks regardless of the domain.
 
-## Permissions
+### Permissions
 
 The extension requires the following permissions to function properly:
 
@@ -66,7 +66,7 @@ The extension requires the following permissions to function properly:
 
     This is helpful for scheduling background tasks, such as refreshing tokens or notifying users of expiring credentials.
 
-## Content Security Policy
+### Content Security Policy
 
 The extension uses a Content Security Policy (CSP) to control the resources that can be loaded and executed on its pages.
 
@@ -86,7 +86,7 @@ The extension uses a Content Security Policy (CSP) to control the resources that
 
     This ensures no malicious plugins or objects from third-party sources can be executed within the extension.
 
-## Content Scripts
+### Content Scripts
 
 Defines JavaScript files to be injected into web pages, enabling the extension to interact with the content of those pages.
 
@@ -120,7 +120,7 @@ Defines JavaScript files to be injected into web pages, enabling the extension t
 
     This is necessary to handle cases where forms or content might exist within an iframe. Without this, the extension might miss elements embedded in such frames.
 
-## Web Accessible Resources
+### Web Accessible Resources
 
 Specifies which resources within the extension can be accessed by web pages.
 
@@ -152,7 +152,7 @@ Specifies which resources within the extension can be accessed by web pages.
 
     These resources are essential for enabling core extension features like dynamic page interactions, internationalization, and user notifications. By explicitly listing them, the extension maintains a secure and controlled set of externally accessible scripts.
 
-## Background
+### Background
 
 Defines the background script, which runs persistently or on-demand to handle events and logic that don't require direct interaction with the user interface.
 
