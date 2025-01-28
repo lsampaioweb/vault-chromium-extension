@@ -12,6 +12,7 @@ The goal of this extension is to simplify credential management and improve team
 
 ### Documentation
 
+1. [Images.](docs/images.md)
 1. [Understanding the Manifest Configuration.](docs/manifest.md)
 1. [Internationalization (i18n).](docs/i18n.md)
 1. [Installation.](docs/installation.md)
