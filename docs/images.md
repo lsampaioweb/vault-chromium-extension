@@ -178,7 +178,7 @@ If the user confirms, the credential is **permanently deleted from Vault**.
 
 ![Delete Credential](images/app/04-07-delete-credential.png)
 
-### 4.2 Personal Credential Details
+## 6 Personal Credential Details
 Using the Vault UI, you can view credential details, with the option to hide or show secret values. It's important to note that the password is securely stored in an encrypted format within Vault, ensuring its protection even when viewed in the UI.
 
 ![Personal Credential Hidden](images/app/04-08-personal-user1-vault-production-vault.dev.homelab-hide.png)
