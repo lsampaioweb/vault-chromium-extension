@@ -187,7 +187,7 @@
     "message": "Use lowercase letters"
   },
   "input_password_generator_uppercase": {
-    "message": "Use capital letters"
+    "message": "Use uppercase letters"
   },
   "input_password_generator_numbers": {
     "message": "Use numbers"

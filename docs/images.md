@@ -24,15 +24,25 @@ Once logged in, the interface displays the authenticated **Vault URL** and the *
 ![Signed In](images/app/02-03-signed-in.png)
 
 ## 3. Tools
-This section highlights the available tools within the extension, such as Password Generator, Wrap, and Unwrap functionalities.
+This section highlights the available tools within the extension, including the **Password Generator**, **Wrap**, and **Unwrap** functionalities.
 
 ![Tools](images/app/03-01-tools.png)
 
 ### 3.1 Password Generator
-The Password Generator tool allows users to create secure passwords with options to show or hide the generated password.
+The **Password Generator** tool allows users to create secure passwords with customizable options. Users can specify:
+- Inclusion of **numbers**, **lowercase letters**, **uppercase letters**, and **special characters**
+- Desired **password length** (default is **20 characters**)
 
 ![Password Generator](images/app/03-02-password-generator.png)
+
+#### 3.1.1 Generated Password (Hidden)
+Once a random password is generated, it is displayed as **masked characters ("****")** by default. This allows users to copy the password securely without exposing it on the screen.
+
 ![Password Generator Generated (Hide)](images/app/03-03-password-generator-generated-hide.png)
+
+#### 3.1.2 Generated Password (Visible)
+If needed, users can click the **"View"** button to reveal the generated password.
+
 ![Password Generator Generated (Show)](images/app/03-04-password-generator-generated-show.png)
 
 ### 3.2 Wrap
