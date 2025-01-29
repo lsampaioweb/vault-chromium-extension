@@ -46,11 +46,28 @@ If needed, users can click the **"View"** button to reveal the generated passwor
 ![Password Generator Generated (Show)](images/app/03-04-password-generator-generated-show.png)
 
 ### 3.2 Wrap
-The Wrap tool simplifies the process of creating wrapped secrets, offering both simple and advanced options.
+The **Wrap** tool simplifies the process of creating wrapped secrets, providing both **Simple** and **Advanced** options to accommodate different user needs.
+
+#### 3.2.1 Simple Wrap
+The **Simple** tab is designed for users who may not be familiar with JSON formatting. It allows users to create a wrapped secret using a **single key-value pair**.
+- Users can enter a **key** (e.g., `password`) and a **value** (e.g., `xyzabc123@`).
+- The expiration time for the wrapped secret can be set, with the **default being 30 minutes**, just like in the Vault UI.
 
 ![Wrap Simple](images/app/03-05-wrap-simple.png)
+
+To assist users, a **sample key-value entry** is provided for reference.
+
 ![Wrap Simple Sample](images/app/03-06-wrap-simple-sample.png)
+
+Once the secret is wrapped, Vault returns a **wrapped token (hash)**, which can be shared securely without exposing the actual value.
+
 ![Wrap Simple Sample Generated](images/app/03-07-wrap-simple-sample-generated.png)
+
+#### 3.2.2 Advanced Wrap
+The **Advanced** tab is intended for more experienced users who need to wrap **multiple key-value pairs**.
+- This tab requires a **valid JSON format**, similar to the Vault UI.
+- A sample with two key-value pairs is provided to guide users in structuring their input correctly.
+
 ![Wrap Advanced](images/app/03-08-wrap-advanced.png)
 
 ### 3.3 Unwrap
