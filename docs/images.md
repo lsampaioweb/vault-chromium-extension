@@ -91,11 +91,36 @@ This ensures that sensitive information is **not exposed multiple times** and re
 ![Unwrap Tried Again](images/app/03-11-unwrap-tried-again.png)
 
 ## 4. Create Credentials
-This section shows how to create and manage credentials using the extension.
+This section explains how to **create and manage credentials** using the extension. Users can define various properties for their credentials, such as **secret engine, path, name, authentication type**, and **optional comments** for better organization.
+
+Users can either **manually enter a password or token** or use the **"Random Password"** or **"Random Token"** button to generate a secure credential.
+
+### 4.1 Defining Credential Properties
+The user must provide the **secret engine, path, credential name**, and choose whether the credential will be a **username/password** or a **token**. An optional **comment field** is also available for describing the credential.
 
 ![Create Credential (User Password)](images/app/04-01-create-credential-user-password.png)
+
+### 4.2 Selecting the Secret Engine
+The first step is to choose the **secret engine** where the credential will be stored. This dropdown lists all secret engines the user has access to.
+
+In this example, the user has access to both **personal secrets** and a **team secret** engine. Credentials stored in the **team secret engine** can be accessed and shared with all members of that team.
+
 ![Create Credential (List Secret Engines)](images/app/04-02-create-credential-list-secret-engines.png)
+
+### 4.3 Organizing with Multiple Paths
+Just like in Vault’s UI, users can create **structured paths** to organize credentials efficiently. For example, credentials can be stored under paths such as:
+- `production/database`
+- `staging/database`
+
+This feature is particularly useful for managing **a large number of credentials** in an organized manner.
+
 ![Create Credential (Multiple Paths)](images/app/04-03-create-credential-multiple-paths.png)
+
+### 4.4 Creating a Token-Based Credential
+If the user selects **"Token"** as the credential type, only the **Token field** is displayed.
+
+Some credentials are **not** a combination of **username and password**, but instead just a **single token**. This option allows users to store and manage such credentials easily.
+
 ![Create Credential (User Token)](images/app/04-04-create-credential-user-token.png)
 
 ### 4.1 List and Delete Credentials
