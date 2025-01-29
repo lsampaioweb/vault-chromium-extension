@@ -142,12 +142,36 @@ Each credential entry provides action buttons:
 
 ![List Credentials (Small)](images/app/04-05-list-credential-small.png)
 
-### 5.2 Pagination for Large Credential Lists
+### 5.2 Integration with Vault UI Credentials
+
+If you're using **HashiCorp Vault** to store secrets and credentials, credentials created through the Vault UI can also be listed by the extension. However, there are some requirements to ensure proper integration.
+
+#### Field Name Mapping
+In order for the extension to recognize and display Vault UI credentials correctly, the field names must align with one of the following mappings:
+- **Username Keys**:
+
+  `"user", "usuario", "username", "user_name", "login", "cpf", "email"`
+
+- **Password Keys**:
+
+  `"pass", "senha", "password", "secret"`
+
+- **Token Keys**:
+
+  `"token", "key", "chave"`
+
+- **Comment Keys**:
+
+  `"comment", "comments", "comentario", "comentarios", "comentário", "comentários"`
+
+Ensure that the stored credentials in Vault follow these naming conventions for seamless listing and management within the extension.
+
+### 5.3 Pagination for Large Credential Lists
 If the list contains **more than four credentials**, a **pagination bar** appears, allowing users to navigate through the results easily.
 
 ![List Credentials (Pagination)](images/app/04-06-list-credential-pagination.png)
 
-### 5.3 Deleting a Credential
+### 5.4 Deleting a Credential
 Each credential entry includes a **Delete button**. When clicked, a **confirmation popup** appears asking if the user is sure about deleting the credential.
 
 If the user confirms, the credential is **permanently deleted from Vault**.
