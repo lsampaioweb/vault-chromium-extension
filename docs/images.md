@@ -71,10 +71,23 @@ The **Advanced** tab is intended for more experienced users who need to wrap **m
 ![Wrap Advanced](images/app/03-08-wrap-advanced.png)
 
 ### 3.3 Unwrap
-The Unwrap tool allows users to securely retrieve the contents of a wrapped secret.
+The **Unwrap** tool allows users to securely retrieve the original contents of a wrapped secret by providing a valid wrapped token (hash).
+
+#### 3.3.1 Entering a Wrapped Token
+This page is used when a user receives a **wrapped token (hash)** from someone and needs to retrieve its original content. The user simply enters the token into the provided field.
 
 ![Unwrap](images/app/03-09-unwrap.png)
+
+#### 3.3.2 Retrieving the Original Content
+Once the user submits the wrapped token, Vault returns and displays the **original secret** that was previously wrapped.
+
 ![Unwrap Sample](images/app/03-10-unwrap-sample.png)
+
+#### 3.3.3 Security: One-Time Use
+For security reasons, wrapped tokens **can only be unwrapped once**. If the same token is used again, an **error message** is displayed indicating that the token was either **not found or has already been used**.
+
+This ensures that sensitive information is **not exposed multiple times** and remains secure.
+
 ![Unwrap Tried Again](images/app/03-11-unwrap-tried-again.png)
 
 ## 4. Create Credentials
