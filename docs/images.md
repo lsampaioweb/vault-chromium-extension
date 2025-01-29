@@ -6,10 +6,21 @@ This section shows the About page of the extension, giving users an overview of 
 ![About](images/app/01-about.png)
 
 ## 2. Login
-This section showcases the login process, error handling, and the interface after successful login.
+This section showcases the login process, error handling, and the interface after a successful login.
+
+### 2.1 Login Page
+The login page allows users to enter the Vault URL and choose an authentication method. We recommend using **HTTPS** for security, as shown in the example. Users can authenticate using either **local Vault credentials** or **LDAP authentication**.
 
 ![Login](images/app/02-01-login.png)
+
+### 2.2 Error Handling
+If the user does not provide all required fields or enters invalid values, the extension displays validation messages to guide them. This ensures a smoother experience by preventing common mistakes.
+
 ![Login Error Message](images/app/02-02-login-error-message.png)
+
+### 2.3 Signed-In State
+Once logged in, the interface displays the authenticated **Vault URL** and the **user's name**, confirming a successful login. This provides users with clear feedback that they are connected to the correct Vault instance.
+
 ![Signed In](images/app/02-03-signed-in.png)
 
 ## 3. Tools
