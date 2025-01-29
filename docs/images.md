@@ -123,11 +123,35 @@ Some credentials are **not** a combination of **username and password**, but ins
 
 ![Create Credential (User Token)](images/app/04-04-create-credential-user-token.png)
 
-### 4.1 List and Delete Credentials
-View and manage your credentials, including pagination and deletion features.
+## 5. List and Delete Credentials
+This section explains how to **view, search, and manage credentials**, including features like **pagination and deletion**.
+
+### 5.1 Searching for Credentials
+The extension automatically searches for credentials based on the **current website URL** when the user clicks the extension icon in the browser.
+
+For example, if the user is on **github.com** and clicks the extension icon, the popup will **automatically search for stored credentials** related to "github.com". If any matching credentials are found, they will be displayed. Otherwise, no results will be shown.
+
+Users can also **manually enter a search term** to find credentials.
+
+Each credential entry provides action buttons:
+- **Copy Username** (if applicable)
+- **Copy Password** (if applicable)
+- **Copy Token** (for token-based credentials)
+- **Edit Credential**
+- **Delete Credential**
 
 ![List Credentials (Small)](images/app/04-05-list-credential-small.png)
+
+### 5.2 Pagination for Large Credential Lists
+If the list contains **more than four credentials**, a **pagination bar** appears, allowing users to navigate through the results easily.
+
 ![List Credentials (Pagination)](images/app/04-06-list-credential-pagination.png)
+
+### 5.3 Deleting a Credential
+Each credential entry includes a **Delete button**. When clicked, a **confirmation popup** appears asking if the user is sure about deleting the credential.
+
+If the user confirms, the credential is **permanently deleted from Vault**.
+
 ![Delete Credential](images/app/04-07-delete-credential.png)
 
 ### 4.2 Personal Credential Details
