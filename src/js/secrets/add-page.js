@@ -91,16 +91,17 @@ export class Page extends PageBase {
 
   static isValidSecretEngineOrSecretName(text) {
     return {
-      // Regex: ^[\w-.:/ ]+$
+      // Regex: ^[\w-.:/\\ ]+$
       // - ^ and $: Ensure the entire string matches.
       // - \w: Matches any alphanumeric character (A-Z, a-z, 0-9, and _).
-      // - -: Allows hyphens (-) as valid characters.
-      // - .: Allows periods (.).
-      // - :: Allows colons (:).
-      // - /: Allows forward slashes (/).
-      // -  : Allows spaces ( ).
-      // - +: Ensures at least one valid character is present.
-      isValid: this.isValidElement(text, /^[\w-.:/ ]+$/gi),
+      // - - : Allows hyphens (-).
+      // - . : Allows periods (.).
+      // - : : Allows colons (:).
+      // - / : Allows forward slashes (/).
+      // - \\: Allows backslashes (\).
+      // -   : Allows spaces ( ).
+      // - + : Ensures at least one valid character is present.
+      isValid: this.isValidElement(text, /^[\w-.:/\\ ]+$/gi),
       errorMessage: ''
     };
   }

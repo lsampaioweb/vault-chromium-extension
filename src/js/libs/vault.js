@@ -546,7 +546,16 @@ export class Vault extends HttpRequest {
     }
 
     if (subkeys.length > 0) {
-      url = `${url}/${subkeys.join(this.#SEPARATOR)}`;
+      const encodedSubkeys = subkeys.map(key => {
+        if (this.#isSecretAFolder(key)) {
+          // If it's a folder, return it as is (do not encode).
+          return key;
+        } else {
+          // If it's not a folder, URL-encode it.
+          return encodeURIComponent(key);
+        }
+      });
+      url = `${url}/${encodedSubkeys.join(this.#SEPARATOR)}`;
     }
 
     return this.#removeDoubleSlash(url);
