@@ -1,100 +1,134 @@
-### Vault Configurations
+# Vault Configurations
 
-To enable this browser extension to interact with Vault, you need to have a running and properly configured Vault instance.
+To use the `Vault Chromium Extension`, you need a running `HashiCorp Vault` instance. If you don’t have one, try the [Vault Docker project](https://github.com/lsampaioweb/vault-docker) for an easy setup.
 
-If you don’t have a Vault instance set up yet, you can quickly get started by using our [Vault](https://github.com/lsampaioweb/vault-docker) project. This repository provides an easy way to run a Vault container with all the necessary configurations.
+### Configure Vault URL
 
+Set the `Vault` address:
 
-### Vault Configuration
-
-  - Set the Vault URL:
+1. Run the following command:
     ```bash
     export VAULT_ADDR=https://vault.dev.homelab
     ```
 
-  - Log in to Vault:
+### Log In to Vault
+
+Log in using your `Vault` credentials:
+
+1. Run the following command:
     ```bash
-    # Add '-tls-skip-verify' if using self-signed certificate.
     vault login
     ```
 
-### Enable and Configure KV Secrets Engines
+If using a self-signed certificate, add `-tls-skip-verify` (use cautiously).
 
-  - Personal Secrets (KV)
+### Enable KV Secrets Engines
+
+Enable secrets engines for personal and team credentials:
+
+1. Enable the personal secrets engine:
     ```bash
-    # Enable a KV secrets engine for personal secrets.
-    # If you omit the -version parameter, Vault defaults to KV version 1.
     vault secrets enable -path=personal -version=2 -description="Secrets specific to individual users" kv
     ```
 
-  - Team/Shared Secrets (KV)
+1. Enable the team secrets engine:
     ```bash
-    # Enable a KV secrets engine for team/shared secrets.
     vault secrets enable -path=team -version=2 -description="Shared secrets for teams or groups" kv
+    ```
 
-    # (Optional) Verify the secrets engine is enabled.
+Verify the secrets engines:
+
+1. Run the following command:
+    ```bash
     vault secrets list
     ```
 
 ### Create Local Users
 
-  - Vault provides an `userpass` authentication method to create local users with passwords.
+Enable the `userpass` authentication method:
 
+1. Run the following command:
     ```bash
-    # Enable the userpass authentication method
     vault auth enable userpass
+    ```
 
-    # Create user1
+Create users:
+
+1. Create a user (e.g., `user1`):
+    ```bash
     vault write auth/userpass/users/user1 password="userpass"
+    ```
 
-    # Create user2
+1. Create additional users if needed (e.g., `user2`):
+    ```bash
     vault write auth/userpass/users/user2 password="userpass"
+    ```
 
-    # Create user3
+1. Create additional users if needed (e.g., `user3`):
+    ```bash
     vault write auth/userpass/users/user3 password="userpass"
     ```
 
 ### Retrieve the Mount Accessor for `userpass`
 
-  - To retrieve the mount accessor for the `userpass` authentication method, run the following command:
+Retrieve the mount accessor for `userpass`:
 
+1. Run the following command:
     ```bash
     vault auth list -format=json | jq -r '.["userpass/"].accessor'
     ```
 
-  - This command will output a string representing the mount accessor for the `userpass` auth method, which you’ll need when defining policies.
-
-    For example, the output might look like this:
-    ```bash
-    auth_userpass_150b3b70
-    ```
-
-    You should include this accessor string in the policy file [docs/vault/policy/personal.hcl](policy/personal.hcl) where applicable.
+This outputs a string (e.g., `auth_userpass_150b3b70`) to use in [policy/personal.hcl](policy/personal.hcl).
 
 ### Create Policies
 
-  Policies define which resources (paths) users can access and their actions (capabilities).
+Apply policies:
 
-  - Policy for [Personal](policy/personal.hcl) Secrets
+1. Apply the policy for personal secrets:
     ```bash
-    vault policy write personal docs/vault/policy/personal.hcl
+    vault policy write personal policy/personal.hcl
     ```
 
-  - Policy for [Team](policy/team.hcl) Secrets
+1. Apply the policy for team secrets:
     ```bash
-    vault policy write team docs/vault/policy/team.hcl
+    vault policy write team policy/team.hcl
     ```
 
 ### Assign Policies to Users
 
-  Policies are attached to users via roles in the `userpass` authentication method.
+Assign policies to users:
 
-  - Policy for Personal Secrets
+1. Assign policies to `user1`:
     ```bash
-    # Assign the personal to user1, user2, and user3
     vault write auth/userpass/users/user1 policies=personal,team
+    ```
+
+1. Assign policies to `user2`:
+    ```bash
     vault write auth/userpass/users/user2 policies=personal
+    ```
+
+1. Assign policies to `user3`:
+    ```bash
     vault write auth/userpass/users/user3 policies=personal,team
     ```
+
+### Troubleshooting
+
+If you encounter issues, try these solutions:
+
+- **Vault URL not responding**:
+
+  Ensure the URL uses `HTTPS` and matches `VAULT_ADDR`. Check that `Vault` is running.
+
+- **Invalid username or password**:
+
+  Verify your credentials and authentication method (`LDAP` or `userpass`).
+
+- **Invalid token**:
+
+  Log out and log in again via the `Login` page.
+
+For advanced issues, open a ticket in the [GitHub repository](https://github.com/lsampaioweb/vault-chromium-extension).
 
 [Go Back.](../../README.md)
