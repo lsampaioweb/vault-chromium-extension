@@ -1,151 +1,182 @@
 # Understanding the Manifest Configuration
 
-This document provides an in-depth explanation of the `manifest.json` file for our Extension. It details the purpose and necessity of each configuration section, ensuring clarity for developers and contributors looking to understand or modify the extension's behavior.
+This document explains the `manifest.json` configuration for the `Vault Chromium Extension`, detailing each section’s purpose and necessity for developers and contributors.
+
+### Manifest Overview
+
+The `manifest.json` file defines the `Vault Chromium Extension`’s structure, permissions, and behavior, adhering to Chrome’s Manifest V3 standards. It enables features like credential management and secure `Vault` integration (see [Images](images.md)).
 
 ### Host Permissions
 
-Defines the set of URLs the extension is allowed to interact with directly.
+The `manifest.json` specifies host permissions to allow interaction with web pages:
 
-1. **`<all_urls>`**
+1. `<all_urls>`:
+    ```json
+    "host_permissions": ["<all_urls>"]
+    ```
+    Grants access to all URLs, enabling the extension to inject scripts, monitor navigation, and manage `Vault` credentials across websites.
 
-    Grants the extension access to all URLs.
+    **Why it’s needed**:
 
-    **Why it's needed:**
-
-    This allows the extension to function across various pages, enabling features like injecting content scripts, monitoring navigation events, and managing Vault-related tasks regardless of the domain.
+    Supports autofilling forms and searching credentials based on the current website URL.
 
 ### Permissions
 
-The extension requires the following permissions to function properly:
+The extension requires specific permissions for its functionality:
 
-1. **`activeTab`**
+1. `activeTab`:
+    ```json
+    "permissions": ["activeTab"]
+    ```
+    Allows temporary access to the active tab when the user interacts with the extension.
 
-    Grants temporary access to the content of the active tab when the user interacts with the extension.
+    **Why it’s needed**:
 
-    **Why it's needed:**
+    Retrieves the current tab’s URL to match credentials or inject scripts for autofill.
 
-    This permission is required to interact with the currently open tab, such as retrieving the page URL to match Vault credentials or injecting scripts into the tab.
+1. `webNavigation`:
+    ```json
+    "permissions": ["webNavigation"]
+    ```
+    Enables listening for navigation events on websites.
 
-1. **`webNavigation`**
+    **Why it’s needed**:
 
-    Provides the ability to listen for navigation events on websites.
+    Detects page loads to trigger credential autofill or other actions.
 
-    **Why it's needed:**
+1. `scripting`:
+    ```json
+    "permissions": ["scripting"]
+    ```
+    Permits dynamic script injection into web pages.
 
-    This is used to monitor page transitions or detect when certain pages are loaded, enabling the extension to pre-fill credentials or perform other actions automatically.
+    **Why it’s needed**:
 
-1. **`scripting`**:
+    Injects scripts to autofill forms or interact with page content.
 
-    Allows the extension to inject scripts into web pages dynamically.
+1. `storage`:
+    ```json
+    "permissions": ["storage"]
+    ```
+    Allows storing and retrieving data using Chrome’s `storage` API.
 
-    **Why it's needed:**
+    **Why it’s needed**:
 
-    This is essential for the extension to interact with the webpage, such as autofilling credentials or interacting with Vault-related data directly in the page's DOM.
+    Saves settings, preferences, or cached `Vault` tokens securely.
 
-1. **`storage`**:
+1. `clipboardWrite`:
+    ```json
+    "permissions": ["clipboardWrite"]
+    ```
+    Enables copying data to the clipboard.
 
-    Enables the extension to store and retrieve data locally or sync it across devices using Chrome's storage API.
+    **Why it’s needed**:
 
-    **Why it's needed:**
+    Supports copying usernames, passwords, or tokens.
 
-    This is used to save configuration settings, preferences, or cached data securely.
+1. `alarms`:
+    ```json
+    "permissions": ["alarms"]
+    ```
+    Allows scheduling tasks or alarms.
 
-1. **`clipboardWrite`**
+    **Why it’s needed**:
 
-    Allows the extension to copy data to the clipboard.
+    Manages background tasks, such as refreshing `Vault` tokens.
 
-    **Why it's needed:**
+### Security Considerations
 
-    This is used for features like copying passwords or other sensitive data securely to the clipboard.
+The `manifest.json` uses a Content Security Policy (CSP) to enhance security:
 
-1. **`alarms`**
+1. `script-src 'self'`:
+    ```json
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+    ```
+    Restricts scripts to those from the extension itself, preventing external JavaScript execution.
 
-    Allows the extension to schedule tasks or set alarms.
+    **Why it’s needed**:
 
-    **Why it's needed:**
+    Protects against Cross-Site Scripting (XSS) attacks.
 
-    This is helpful for scheduling background tasks, such as refreshing tokens or notifying users of expiring credentials.
+1. `object-src 'self'`:
+    ```json
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+    ```
+    Limits `<object>` elements to extension-hosted resources.
 
-### Content Security Policy
+    **Why it’s needed**:
 
-The extension uses a Content Security Policy (CSP) to control the resources that can be loaded and executed on its pages.
-
-1. **`script-src 'self';`**
-
-    Restricts scripts to those originating from the extension itself.
-
-    **Why it's needed:**
-
-    This prevents unauthorized JavaScript from external sources, protecting against vulnerabilities like Cross-Site Scripting (XSS).
-
-1. **`object-src 'self';`**
-
-    Restricts `<object>` elements, such as embedded plugins, to those hosted by the extension.
-
-    **Why it's needed:**
-
-    This ensures no malicious plugins or objects from third-party sources can be executed within the extension.
+    Prevents malicious plugins or objects from running.
 
 ### Content Scripts
 
-Defines JavaScript files to be injected into web pages, enabling the extension to interact with the content of those pages.
+Content scripts enable interaction with web pages:
 
-1. **`matches: <all_urls>`**
+1. `matches: <all_urls>`:
+    ```json
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": [
+          "/js/browser/browser-polyfill.min.js",
+          "/js/browser/content.js"
+        ],
+        "all_frames": true
+      }
+    ]
+    ```
+    Injects scripts into all URLs, including iframes (`all_frames: true`).
 
-    Specifies that the content scripts should be injected into all URLs.
+    **Why it’s needed**:
 
-    **Why it's needed:**
+    Enables autofill and credential detection on any webpage.
 
-    This ensures the extension can work on any webpage, enabling dynamic features such as autofill, credential detection, or UI modifications.
+    - `/js/browser/browser-polyfill.min.js`:
 
-1. **`js`**
+      Ensures compatibility across browsers.
 
-    A list of scripts to be injected into the pages:
+    - `/js/browser/content.js`:
 
-    - **`/js/browser/browser-polyfill.min.js`**
-      Provides compatibility for browser APIs across different browsers, ensuring the extension functions reliably regardless of the user's browser.
-
-    - **`/js/browser/content.js`**
-      Handles the main logic for interacting with webpage content, such as detecting forms, injecting Vault credentials, or triggering specific extension features.
-
-    **Why it's needed:**
-
-    These scripts are essential for enabling the extension to integrate seamlessly with web pages and perform its core functions.
-
-1. **`all_frames: true`**
-
-    Ensures that the scripts are injected into all frames within a webpage, including iframes.
-
-    **Why it's needed:**
-
-    This is necessary to handle cases where forms or content might exist within an iframe. Without this, the extension might miss elements embedded in such frames.
+      Handles form detection and credential injection.
 
 ### Web Accessible Resources
 
-Specifies which resources within the extension can be accessed by web pages.
+Resources accessible by web pages are defined:
 
-1. **`matches: <all_urls>`**
-
-    Allows the resources to be accessed from all URLs.
-
-    **Why it's needed:**
-
-    This ensures that the specified scripts can be used in various contexts, such as injecting content or providing utilities to enhance website functionality.
-
-1. **`resources`**
-
+1. `matches: <all_urls>`:
+    ```json
+    "web_accessible_resources": [
+      {
+        "matches": ["<all_urls>"],
+        "resources": [
+          "/js/libs/notification.js",
+          "/js/libs/html-replace.js",
+          "/js/libs/i18n.js",
+          "/js/libs/forms.js"
+        ]
+      }
+    ]
+    ```
     A list of specific scripts made available for access:
 
     - **`/js/libs/notification.js`**
+
       Provides notification functionalities for alerting users.
 
     - **`/js/libs/html-replace.js`**
+
       Enables dynamic replacement or manipulation of HTML content.
 
     - **`/js/libs/i18n.js`**
+
       Handles internationalization (i18n), making the extension adaptable to different languages.
 
     - **`/js/libs/forms.js`**
+
       Offers utilities for handling form data, such as parsing and validation.
 
     **Why it's needed:**
@@ -154,22 +185,21 @@ Specifies which resources within the extension can be accessed by web pages.
 
 ### Background
 
-Defines the background script, which runs persistently or on-demand to handle events and logic that don't require direct interaction with the user interface.
+The background script manages core functionality:
 
-1. **`service_worker`**
+1. `service_worker`:
+    ```json
+    "background": {
+      "service_worker": "/js/browser/background.js",
+      "type": "module"
+    }
+    ```
+    Specifies `/js/browser/background.js` as the service worker, using ES6 modules (`type: module`).
 
-    Specifies the background script file: `/js/browser/background.js`.
+    **Why it’s needed**:
 
-    **Why it's needed:**
+    Handles events, API calls to `Vault`, and scheduled tasks like token renewal.
 
-    The background script manages core extension functionality, such as handling alarms, responding to browser events, or performing API interactions with Vault in the background.
-
-1. **`type: module`**
-
-    Declares that the background script is a JavaScript module.
-
-    **Why it's needed:**
-
-    Using a module allows for better organization of the code, supporting features like `import/export`, making the script cleaner and more maintainable.
+For issues, open a ticket in the [GitHub repository](https://github.com/lsampaioweb/vault-chromium-extension).
 
 [Go Back.](../README.md)
