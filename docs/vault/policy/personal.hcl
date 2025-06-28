@@ -1,3 +1,9 @@
+# Personal Policy for Vault Chromium Extension
+#
+# This policy grants users access to their personal secrets in the `Vault` KV secrets engine
+# under the `personal/` path, scoped to their user identity. It allows listing, reading,
+# creating, updating, and deleting secrets, as well as managing deleted secrets.
+
 # Access to the metadata of the user's personal secrets.
 # This allows users to list their secret paths, create new metadata, and modify or delete existing metadata.
 path "personal/metadata/{{ identity.entity.aliases.auth_userpass_150b3b70.name }}/*" {
