@@ -44,22 +44,22 @@ Use this template for consistent release notes:
 ## [X.Y.Z] - YYYY-MM-DD
 
 ### Added
-- New features and functionality.
+  - New features and functionality.
 
 ### Changed
-- Changes to existing functionality.
+  - Changes to existing functionality.
 
 ### Deprecated
-- Features that will be removed in future versions.
+  - Features that will be removed in future versions.
 
 ### Removed
-- Features that have been removed.
+  - Features that have been removed.
 
 ### Fixed
-- Bug fixes.
+  - Bug fixes.
 
 ### Security
-- Security improvements and vulnerability fixes.
+  - Security improvements and vulnerability fixes.
 ```
 
 ### 3. Create Git Tag
@@ -98,19 +98,19 @@ git push origin v2.0.0
 After creating the GitHub release:
 
 1. **Package the Extension:**
-   ```bash
-   # Create a zip file of the src directory.
-   cd src
-   zip -r ../vault-chromium-extension-vX.Y.Z.zip .
-   cd ..
-   ```
+    ```bash
+    # Create a zip file of the src directory.
+    cd src
+    zip -r ../vault-chromium-extension-vX.Y.Z.zip .
+    cd ..
+    ```
 
-2. **Upload to Chrome Web Store:**
-   - Go to [Chrome Web Store Developer Console](https://chrome.google.com/webstore/devconsole/).
-   - Select your extension.
-   - Upload the new zip file.
-   - Update store listing if needed.
-   - Submit for review.
+1. **Upload to Chrome Web Store:**
+    - Go to [Chrome Web Store Developer Console](https://chrome.google.com/webstore/devconsole/).
+    - Select your extension.
+    - Upload the new zip file.
+    - Update store listing if needed.
+    - Submit for review.
 
 ---
 
