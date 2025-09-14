@@ -28,6 +28,40 @@ Before creating a release, update [changelog.md](changelog.md) with:
 - List of new features, bug fixes, and breaking changes.
 - Follow semantic versioning (MAJOR.MINOR.PATCH).
 
+## Versioning Guidelines
+
+Follow [Semantic Versioning](https://semver.org/):
+
+- **MAJOR** (X.0.0): Breaking changes, major architectural changes.
+- **MINOR** (1.Y.0): New features, backward-compatible functionality.
+- **PATCH** (1.0.Z): Bug fixes, minor improvements.
+
+## Release Notes Template
+
+Use this template for consistent release notes:
+
+```markdown
+## [X.Y.Z] - YYYY-MM-DD
+
+### Added
+- New features and functionality.
+
+### Changed
+- Changes to existing functionality.
+
+### Deprecated
+- Features that will be removed in future versions.
+
+### Removed
+- Features that have been removed.
+
+### Fixed
+- Bug fixes.
+
+### Security
+- Security improvements and vulnerability fixes.
+```
+
 ### 3. Create Git Tag
 
 Create an annotated tag with the version number:
@@ -77,40 +111,6 @@ After creating the GitHub release:
    - Upload the new zip file.
    - Update store listing if needed.
    - Submit for review.
-
-## Versioning Guidelines
-
-Follow [Semantic Versioning](https://semver.org/):
-
-- **MAJOR** (X.0.0): Breaking changes, major architectural changes.
-- **MINOR** (1.Y.0): New features, backward-compatible functionality.
-- **PATCH** (1.0.Z): Bug fixes, minor improvements.
-
-## Release Notes Template
-
-Use this template for consistent release notes:
-
-```markdown
-## [X.Y.Z] - YYYY-MM-DD
-
-### Added
-- New features and functionality.
-
-### Changed
-- Changes to existing functionality.
-
-### Deprecated
-- Features that will be removed in future versions.
-
-### Removed
-- Features that have been removed.
-
-### Fixed
-- Bug fixes.
-
-### Security
-- Security improvements and vulnerability fixes.
-```
 
 ---
 
