@@ -21,6 +21,7 @@ The goal of this extension is to simplify credential management and improve team
 1. [Manifest](docs/manifest.md): Explanation of the extension’s `manifest.json`.
 1. [Internationalization](docs/i18n.md): Adding support for new languages.
 1. [Changelog](docs/changelog.md): Version history and release notes.
+1. [Deployment](docs/deployment.md): Instructions for creating releases and deploying new versions.
 
 ### Links
 
