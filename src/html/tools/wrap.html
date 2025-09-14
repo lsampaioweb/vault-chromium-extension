@@ -2,113 +2,111 @@
 <html lang="en">
 
 <head>
-  <title>__MSG_app_name__</title>
   <meta charset="utf-8" />
-  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="__MSG_app_description__" />
+  <title>__MSG_app_name__</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
+<body class="i18n-loading">
   <header class="header">
     <div class="container">
       <h1 class="h1 title">__MSG_app_name__</h1>
     </div>
     <div class="container">
-      <nav role="navigation" class="menu" aria-label="Main Menu">
+      <nav class="menu" aria-label="Main Menu">
         <span class="menu_links">
-          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_ui_title_page_secrets__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/tools/index.html" class="link link--alt link--current"
-            aria-current="page">__MSG_page_tools__</a>
+          <a href="/html/tools/index.html" class="link link--alt link--current">__MSG_ui_title_page_tools__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/login/index.html" class="link link--alt">__MSG_page_login__</a>
+          <a href="/html/about/index.html" class="link link--alt">__MSG_ui_title_page_about__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/about/index.html" class="link link--alt">__MSG_page_about__</a>
+          <a href="/html/login/index.html" class="link link--alt">__MSG_ui_title_page_login__</a>
         </span>
         <span id="page_test" class="menu_links hidden">
-          <a href="/html/test/index.html" class="link link--alt">__MSG_page_test__</a>
+          <a href="/html/test/index.html" class="link link--alt">__MSG_ui_title_page_test__</a>
         </span>
       </nav>
     </div>
   </header>
 
-  <main class="main">
+  <main id="main-content" class="main">
     <div class="form-container">
 
-      <div id="notify"></div>
+      <div id="notify" role="alert" aria-live="polite"></div>
 
-      <div id="form" class="">
-        <label class="label" for="wrap_complex">
+      <section aria-labelledby="wrap-heading">
+        <form id="wrap-form" novalidate>
           <div class="tab">
             <div class="tab_options">
-              <button class="tab_button" id="button_wrap_type_simple">__MSG_input_wrap_type_simple__</button>
-              <button class="tab_button" id="button_wrap_type_complex">__MSG_input_wrap_type_complex__</button>
+              <button type="button" class="tab_button"
+                id="button_wrap_type_simple">__MSG_ui_label_input_wrap_type_simple__</button>
+              <button type="button" class="tab_button"
+                id="button_wrap_type_complex">__MSG_ui_label_input_wrap_type_complex__</button>
             </div>
 
             <div class="tab_content hidden" id="div_wrap_type_simple">
               <label class="label" for="wrap_key">
-                __MSG_input_wrap_key__:
+                __MSG_ui_label_input_wrap_key__:
                 <input type="text" class="input" name="wrap_key" id="wrap_key"
-                  placeholder="__MSG_input_wrap_key_placeholder__" />
+                  placeholder="__MSG_ui_placeholder_input_wrap_key__" />
               </label>
 
               <label class="label" for="wrap_value">
-                __MSG_input_wrap_value__:
-                <input type="text" class="input" name="wrap_value" id="wrap_value"
-                  placeholder="__MSG_input_wrap_value_placeholder__" autocomplete="off" />
+                __MSG_ui_label_input_wrap_value__:
+                <input type="password" class="input" name="wrap_value" id="wrap_value"
+                  placeholder="__MSG_ui_placeholder_input_wrap_value__" autocomplete="off" />
               </label>
             </div>
 
             <div class="tab_content hidden" id="div_wrap_type_complex">
               <label class="label" for="wrap_json">
-                __MSG_input_wrap_json__:
-                <textarea type="text" class="input" name="wrap_json" id="wrap_json" rows="7">
-{
-  "key1": "value1",
-  "key2": "value2"
-}
-                </textarea>
+                __MSG_ui_label_input_wrap_json__:
+                <textarea class="input" name="wrap_json" id="wrap_json"
+                  rows="7">__MSG_ui_placeholder_input_wrap_json__</textarea>
               </label>
-
             </div>
           </div>
 
           <div>
             <label class="label" for="wrap_ttl">
-              __MSG_input_wrap_ttl__:
+              __MSG_ui_label_input_wrap_ttl__:
               <input type="text" class="input" name="wrap_ttl" id="wrap_ttl" value="30" />
             </label>
           </div>
 
-        </label>
+          <div class="center">
+            <button type="button" class="button button_primary" id="button_wrap">__MSG_ui_button_wrap__</button>
+          </div>
+        </form>
+      </section>
 
+      <section>
         <div class="center">
-          <input type="submit" class="button button_primary" id="button_wrap" value="__MSG_button_wrap__" />
-        </div>
-
-        <div class="center">
-          <label class="label center hidden" id="label_wrap_result" for="wrap_result">
-            __MSG_wrap_result__:
+          <div class="label center hidden" id="label_wrap_result">
+            <span>__MSG_ui_label_wrap_result__:</span>
             <img id="wrap_result_copy_img" src="/images/icons/copy-text.png" class="moveable_button"
-              title="__MSG_copy_to_clipboard_img_title__" alt="__MSG_copy_to_clipboard_img_title__" />
+              title="__MSG_ui_tooltip_copy_to_clipboard__" alt="__MSG_ui_tooltip_copy_to_clipboard__" />
             <div class="center">
-              <textarea class="generated_wrap" id="wrap_result" title="__MSG_copy_to_clipboard_img_title__" rows="3"
-                cols="50" readonly></textarea>
+              <textarea class="generated_wrap" id="wrap_result" title="__MSG_ui_tooltip_copy_to_clipboard__" rows="3"
+                cols="50" readonly aria-label="__MSG_ui_label_wrap_result__"></textarea>
             </div>
-          </label>
+          </div>
         </div>
-      </div>
+      </section>
 
     </div>
 
   </main>
-  <div class="footer">__MSG_app_version__</div>
+  <footer class="footer">__MSG_app_version__</footer>
 
-  <script type="module" src="/js/common.js"></script>
-  <script type="module" src="/js/tools/wrap.js"></script>
+  <script type="module" src="/js/pages/tools/wrap-controller.js"></script>
+
 </body>
 
 </html>

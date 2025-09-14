@@ -2,62 +2,114 @@
 <html lang="en">
 
 <head>
-  <title>__MSG_app_name__</title>
   <meta charset="utf-8" />
-  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="__MSG_app_description__" />
+  <title>__MSG_app_name__</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
+<body class="i18n-loading">
   <header class="header">
     <div class="container">
       <h1 class="h1 title">__MSG_app_name__</h1>
     </div>
     <div class="container">
-      <nav role="navigation" class="menu" aria-label="Main Menu">
+      <nav class="menu" aria-label="Main Menu">
         <span class="menu_links">
-          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_ui_title_page_secrets__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/tools/index.html" class="link link--alt">__MSG_page_tools__</a>
+          <a href="/html/tools/index.html" class="link link--alt">__MSG_ui_title_page_tools__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/login/index.html" class="link link--alt">__MSG_page_login__</a>
+          <a href="/html/about/index.html" class="link link--alt link--current">__MSG_ui_title_page_about__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/about/index.html" class="link link--alt link--current"
-            aria-current="page">__MSG_page_about__</a>
+          <a href="/html/login/index.html" class="link link--alt">__MSG_ui_title_page_login__</a>
         </span>
         <span id="page_test" class="menu_links hidden">
-          <a href="/html/test/index.html" class="link link--alt">__MSG_page_test__</a>
+          <a href="/html/test/index.html" class="link link--alt">__MSG_ui_title_page_test__</a>
         </span>
       </nav>
     </div>
   </header>
 
-  <main class="main">
+  <main id="main-content" class="main">
     <div class="form-container">
 
-      <div id="notify"></div>
+      <div id="notify" role="alert" aria-live="polite"></div>
 
       <div id="about" class="about-section">
-        <h4>1.0.0</h4>
-        <ul>
-          <li>Connecting to Vault.</li>
-          <li>Listing personal or team-shared credentials.</li>
-          <li>Quickly copying usernames, passwords, or tokens to the clipboard.</li>
-          <li>Autofilling login forms on websites.</li>
-          <li>Generating random passwords.</li>
-          <li>Wrapping and unwrapping credentials for secure sharing.</li>
-        </ul>
+        <section aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Support and Feedback:</h2>
+          <div class="contact-info">
+            <p><strong>Developer:</strong> Luciano Sampaio</p>
+            <p><strong>Contact:</strong>
+              <span id="support_mail" class="moveable_button"
+                title="__MSG_ui_tooltip_copy_to_clipboard__">lsampaioweb@gmail.com</span>
+              <img id="support_mail_copy_img" src="/images/icons/copy-text.png" class="moveable_button"
+                title="__MSG_ui_tooltip_copy_to_clipboard__" alt="__MSG_ui_tooltip_copy_to_clipboard__" />
+            </p>
+
+            <p><strong>How can I help:</strong></p>
+            <ul>
+              <li>Report issues or bugs.</li>
+              <li>Suggest improvements and new features.</li>
+              <li>Answer questions about usage.</li>
+            </ul>
+
+          </div>
+        </section>
+
+        <section aria-labelledby="changelog-heading">
+          <h2 id="changelog-heading">__MSG_ui_title_changelog__:</h2>
+
+          <details open>
+            <summary><strong>Version 2.0.0</strong> - Major architecture refactoring and improvements.</summary>
+            <ul>
+              <li><strong>__MSG_changelog_type_refactor__:</strong> Complete code refactoring with modern dependency
+                injection architecture, improving maintainability and testability.</li>
+              <li><strong>__MSG_changelog_type_refactor__:</strong> Enhanced JavaScript libraries with better practices,
+                improved validations, and increased security.</li>
+              <li><strong>__MSG_changelog_type_refactor__:</strong> Improved HTML structure with better semantic
+                elements and accessibility features.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Enhanced logging system for better monitoring and
+                debugging of Vault connectivity issues.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Reorganized "About" page with collapsible sections
+                for better version history navigation.</li>
+              <li><strong>__MSG_changelog_type_refactor__:</strong> Improved internationalization (i18n) with
+                standardized translation keys and better message organization.</li>
+              <li><strong>__MSG_changelog_type_refactor__:</strong> Optimized accessibility for Chrome Extensions while
+                maintaining essential functionality for screen readers.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary><strong>Version 1.0.0</strong> - Initial release.</summary>
+            <ul>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Vault connection and authentication.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> List personal and shared credentials.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Automatic credential injection into login forms.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Copy username or password to clipboard.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Password generator with customizable options.</li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Vault response wrapping (wrap/unwrap) functionality.
+              </li>
+              <li><strong>__MSG_changelog_type_feature__:</strong> Full CRUD operations for credential management.</li>
+            </ul>
+          </details>
+
+        </section>
+
       </div>
 
     </div>
 
   </main>
-  <div class="footer">__MSG_app_version__</div>
 
-  <script type="module" src="/js/common.js"></script>
+  <footer class="footer">__MSG_app_version__</footer>
+
+  <script type="module" src="/js/pages/about/about-controller.js"></script>
 </body>
 
 </html>

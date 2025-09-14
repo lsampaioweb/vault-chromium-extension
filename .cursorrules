@@ -1,0 +1,172 @@
+# AI Instructions for Vault Chromium Extension
+
+## Project Overview
+This is a Chrome extension for HashiCorp Vault integration, implementing Spring Boot-like dependency injection patterns in JavaScript ES6 modules. The extension helps users manage credentials stored in Vault with a focus on performance, user experience, and enterprise-grade architecture.
+
+## Architecture & Design Principles
+
+### Dependency Injection Pattern
+- **CRITICAL**: Follow Spring Boot-like dependency injection with single dependencies object pattern
+- Use constructor injection: `constructor(dependencies) { super(dependencies); }`
+- Extract specific dependencies in constructor: `this.Password = dependencies.Password;`
+- ALL dependencies come from service category files (core.js, simple.js, auth.js, secrets.js, tools.js, test.js)
+- NEVER import individual modules directly in controllers - always use service injection
+
+### Controller Inheritance Pattern
+```
+SpecificController → PageController (Base) → PageBaseController
+```
+- Controllers MUST extend their respective PageController base class
+- Base controllers extend PageBaseController from `../../ui/page-base-controller.js`
+- ALL class fields MUST be declared with JSDoc types
+- Use proper method documentation with @param and @returns
+
+### Service Organization
+- **Core Services** (`services/core.js`): Shared dependencies like logger, i18n, storage, form, notification
+- **Category Services**: Extend core + add specific dependencies
+  - `simple.js`: Basic pages (about)
+  - `auth.js`: Authentication pages (login)
+  - `secrets.js`: Secret management (add VaultCrypto, Password, pagination)
+  - `tools.js`: Tool pages (add Password for generators)
+  - `test.js`: Test pages (add CryptoProviderBase)
+- ALL services call `initializePage(dependencies)` from page-initializer.js
+
+### File Naming Convention
+- **PascalCase for controller files**: Match class names exactly
+- Examples: `AboutController.js`, `GeneratorController.js`, `LoginController.js`
+- Base controllers: `about-base-controller.js`, `generator-base-controller.js`
+- Service files: lowercase with hyphens (`page-initializer.js`)
+
+## Code Style & Standards
+
+### JavaScript Preferences
+- **ES6 Modules**: Always use `import/export`
+- **Modern JavaScript**: Prefer const/let, arrow functions, async/await
+- **Error Handling**: Use try/catch with localized error messages via I18n
+- **Logging**: Use injected logger service instead of console.log
+- **Comments**: JSDoc for all public methods, inline comments for complex logic
+
+### Error Handling
+- Use I18n keys for all error messages: `this.I18n.getMessage('error_key')`
+- All error keys must exist in both `en_US/messages.json` and `pt_BR/messages.json`
+- Prefer `this.logger.error()` over `console.error()`
+- Use `this.notification.error()` for user-facing errors
+
+### Performance Considerations
+- Consider generators (`async function*`) and `yield` for streaming large datasets
+- Implement retry logic for network failures (especially 429, 5xx status codes)
+- Use PromisePool for controlled concurrency
+- Consider caching strategies for frequently accessed data
+
+## Vault-Specific Patterns
+
+### API Integration
+- All Vault operations go through the Vault class in `vault/vault.js`
+- Use VaultFactory from dependencies: `this.vaultFactory.create(endpoint, token)`
+- Handle Vault-specific errors: 403 (forbidden), 404 (not found), 429 (rate limited)
+- Personal engines vs shared engines logic
+- KV v1 vs v2 engine handling
+
+### Secret Management
+- Secrets have: engine, path, name, fullName, isPersonal properties
+- Use VaultUtils for path manipulation and validation
+- Implement search with text matching across secret names
+- Support both personal and shared engines
+
+## Browser Extension Specifics
+
+### Manifest & Structure
+- Manifest v3 with service worker background script
+- Content Security Policy: `"script-src 'self'; object-src 'self'"`
+- Use browser polyfill for cross-browser compatibility
+- Module scripts: `<script type="module">`
+
+### HTML Integration
+- Controllers initialize on `i18nReady` event
+- HTML files import controller modules: `<script type="module" src="/js/pages/.../controller.js">`
+- Use I18n placeholders in HTML: `__MSG_key__`
+
+## Testing & Quality
+
+### Code Quality
+- No console.log in production code (use logger)
+- Proper error boundaries and graceful failure handling
+- Validate all inputs and API responses
+- Use meaningful variable and method names
+
+### Best Practices
+- Single Responsibility Principle for classes
+- Dependency injection for testability
+- Immutable data where possible
+- Clear separation between UI, business logic, and data access
+
+## Internationalization (i18n)
+
+### Language Support
+- Primary: English (en_US)
+- Secondary: Portuguese (pt_BR)
+- All user-facing text must be localized
+- Use semantic key names: `error_vault_login_failed`, `ui_message_loading`
+
+## Visual Design
+
+### Color Scheme
+- Primary: Silver/Gray theme (`--silver: #3e4c59`, `--silver-alt: #2c383f`)
+- Use CSS custom properties for consistent theming
+- Maintain accessibility with proper contrast ratios
+
+## Common Patterns to Follow
+
+### Controller Structure
+```javascript
+import { PageController } from './base-controller.js';
+import { dependencies } from '../../services/category.js';
+
+document.addEventListener('i18nReady', () => {
+  const controller = new SpecificController(dependencies);
+  controller.main();
+}, false);
+
+class SpecificController extends PageController {
+  // Declare class fields with JSDoc
+  specificDependency;
+
+  constructor(dependencies) {
+    super(dependencies);
+    this.specificDependency = dependencies.specificDependency;
+  }
+
+  async main() {
+    // Main controller logic
+  }
+}
+```
+
+### Service Structure
+```javascript
+import { dependencies as coreDependencies } from './core.js';
+import { SpecificDependency } from '../path/to/dependency.js';
+import { initializePage } from './page-initializer.js';
+
+export const dependencies = {
+  ...coreDependencies,
+  SpecificDependency
+};
+
+initializePage(dependencies);
+```
+
+## Performance & UX Focus
+- Prioritize instant user feedback over complete data loading
+- Consider streaming results for better perceived performance
+- Implement progressive loading for large datasets
+- Cache frequently accessed data with TTL
+- Graceful degradation for network issues
+
+## Security Considerations
+- Validate all Vault tokens before use
+- Secure credential injection into web pages
+- Proper session management with browser.storage.session
+- Content script security for cross-origin operations
+
+Remember: This is an open-source extension that provides secure credential management for HashiCorp Vault users. Prioritize user experience, performance, and code maintainability in all decisions.

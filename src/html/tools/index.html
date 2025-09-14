@@ -2,60 +2,68 @@
 <html lang="en">
 
 <head>
-  <title>__MSG_app_name__</title>
   <meta charset="utf-8" />
-  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="__MSG_app_description__" />
+  <title>__MSG_app_name__</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
+<body class="i18n-loading">
   <header class="header">
     <div class="container">
       <h1 class="h1 title">__MSG_app_name__</h1>
     </div>
     <div class="container">
-      <nav role="navigation" class="menu" aria-label="Main Menu">
+      <nav class="menu" aria-label="Main Menu">
         <span class="menu_links">
-          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_ui_title_page_secrets__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/tools/index.html" class="link link--alt link--current"
-            aria-current="page">__MSG_page_tools__</a>
+          <a href="/html/tools/index.html" class="link link--alt link--current">__MSG_ui_title_page_tools__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/login/index.html" class="link link--alt">__MSG_page_login__</a>
+          <a href="/html/about/index.html" class="link link--alt">__MSG_ui_title_page_about__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/about/index.html" class="link link--alt">__MSG_page_about__</a>
+          <a href="/html/login/index.html" class="link link--alt">__MSG_ui_title_page_login__</a>
         </span>
         <span id="page_test" class="menu_links hidden">
-          <a href="/html/test/index.html" class="link link--alt">__MSG_page_test__</a>
+          <a href="/html/test/index.html" class="link link--alt">__MSG_ui_title_page_test__</a>
         </span>
       </nav>
     </div>
   </header>
 
-  <main class="main">
+  <main id="main-content" class="main">
     <div class="form-container">
 
-      <div>
-        <ul>
-          <li><a href="/html/tools/generator.html" class="link link--alt">__MSG_page_password_generator__</a></li>
-        </ul>
-        <ul>
-          <li><a href="/html/tools/wrap.html" class="link link--alt">__MSG_page_tools_wrap__</a></li>
-        </ul>
-        <ul>
-          <li><a href="/html/tools/unwrap.html" class="link link--alt">__MSG_page_tools_unwrap__</a></li>
-        </ul>
-      </div>
+      <div id="notify" role="alert" aria-live="polite"></div>
+
+      <nav aria-label="Tools Menu">
+        <section aria-labelledby="password-tools-heading">
+          <h3 id="password-tools-heading">__MSG_ui_section_password_tools__:</h3>
+          <ul class="spaced-list">
+            <li><a href="/html/tools/generator.html" class="link link--alt">__MSG_ui_title_page_password_generator__</a>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="wrap-tools-heading">
+          <h3 id="wrap-tools-heading">__MSG_ui_section_sharing_tools__:</h3>
+          <ul class="spaced-list">
+            <li><a href="/html/tools/wrap.html" class="link link--alt">__MSG_ui_title_page_tools_wrap__</a></li>
+            <li><a href="/html/tools/unwrap.html" class="link link--alt">__MSG_ui_title_page_tools_unwrap__</a></li>
+          </ul>
+        </section>
+      </nav>
 
     </div>
 
   </main>
-  <div class="footer">__MSG_app_version__</div>
+  <footer class="footer">__MSG_app_version__</footer>
 
-  <script type="module" src="/js/common.js"></script>
+  <script type="module" src="/js/services/simple.js"></script>
 </body>
 
 </html>

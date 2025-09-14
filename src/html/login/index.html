@@ -2,90 +2,93 @@
 <html lang="en">
 
 <head>
-  <title>__MSG_app_name__</title>
   <meta charset="utf-8" />
-  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="__MSG_app_description__" />
+  <title>__MSG_app_name__</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
+<body class="i18n-loading">
   <header class="header">
     <div class="container">
       <h1 class="h1 title">__MSG_app_name__</h1>
     </div>
     <div class="container">
-      <nav role="navigation" class="menu" aria-label="Main Menu">
+      <nav class="menu" aria-label="Main Menu">
         <span class="menu_links">
-          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_ui_title_page_secrets__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/tools/index.html" class="link link--alt">__MSG_page_tools__</a>
+          <a href="/html/tools/index.html" class="link link--alt">__MSG_ui_title_page_tools__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/login/index.html" class="link link--alt link--current"
-            aria-current="page">__MSG_page_login__</a>
+          <a href="/html/about/index.html" class="link link--alt">__MSG_ui_title_page_about__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/about/index.html" class="link link--alt">__MSG_page_about__</a>
+          <a href="/html/login/index.html" class="link link--alt link--current">__MSG_ui_title_page_login__</a>
         </span>
         <span id="page_test" class="menu_links hidden">
-          <a href="/html/test/index.html" class="link link--alt">__MSG_page_test__</a>
+          <a href="/html/test/index.html" class="link link--alt">__MSG_ui_title_page_test__</a>
         </span>
       </nav>
     </div>
   </header>
 
-  <main class="main">
+  <main id="main-content" class="main">
     <div class="form-container">
 
-      <div id="notify"></div>
+      <div id="notify" role="alert" aria-live="polite"></div>
 
-      <div id="login" class="hidden">
-        <label class="label" for="url">
-          __MSG_input_url__:
-          <input type="text" class="input" name="url" id="url" placeholder="__MSG_input_url_placeholder__"
-            value="__MSG_input_url_value__" autocomplete="off" />
-        </label>
+      <section aria-labelledby="login-section">
+        <div id="login" class="hidden">
+          <label class="label" for="url">
+            __MSG_ui_label_input_url__:
+            <input type="url" class="input" name="url" id="url" placeholder="__MSG_ui_placeholder_input_url__"
+              value="__MSG_config_vault_url__" autocomplete="url" />
+          </label>
 
-        <label class="label" for="auth_method">
-          __MSG_input_auth_method__:
-          <select class="input" name="auth_method" id="auth_method">
-            <option value="ldap" selected="selected">__MSG_input_auth_method_ldap__</option>
-            <option value="userpass">__MSG_input_auth_method_userpass__</option>
-          </select>
-        </label>
+          <label class="label" for="auth_method">
+            __MSG_ui_label_input_auth_method__:
+            <select class="input" name="auth_method" id="auth_method" autocomplete="off">
+              <option value="ldap" selected="selected">__MSG_ui_value_auth_method_ldap__</option>
+              <option value="userpass">__MSG_ui_value_auth_method_userpass__</option>
+            </select>
+          </label>
 
-        <label class="label" for="username">
-          __MSG_input_username__:
-          <input type="text" class="input" name="username" id="username"
-            placeholder="__MSG_input_username_placeholder__" autocomplete="off" />
-        </label>
+          <label class="label" for="username">
+            __MSG_ui_label_input_username__:
+            <input type="text" class="input" name="username" id="username"
+              placeholder="__MSG_ui_placeholder_input_username__" autocomplete="username" />
+          </label>
 
-        <label class="label" for="password">
-          __MSG_input_password__:
-          <input type="password" class="input" name="password" id="password" />
-        </label>
+          <label class="label" for="password">
+            __MSG_ui_label_input_password__:
+            <input type="password" class="input" name="password" id="password" autocomplete="current-password" />
+          </label>
 
-        <div class="center">
-          <input type="submit" class="button button_primary" id="button_login" value="__MSG_input_button_login__" />
+          <div class="center">
+            <button type="button" class="button button_primary" id="button_login">__MSG_ui_button_login__</button>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div id="logout" class="hidden">
-        <label class="label small center" id="loggedin_url"></label>
-        <label class="label small center" id="loggedin_user"></label>
-        <div class="center">
-          <input type="submit" class="button button_primary" id="button_logout" value="__MSG_input_button_logout__" />
+      <section aria-labelledby="logout-section">
+        <div id="logout" class="hidden">
+          <span class="label small center" id="loggedin_url"></span>
+          <span class="label small center" id="loggedin_user"></span>
+          <div class="center">
+            <button type="button" class="button button_primary" id="button_logout">__MSG_ui_button_logout__</button>
+          </div>
         </div>
-      </div>
+      </section>
 
     </div>
 
   </main>
-  <div class="footer">__MSG_app_version__</div>
+  <footer class="footer">__MSG_app_version__</footer>
 
-  <script type="module" src="/js/common.js"></script>
-  <script type="module" src="/js/login/index.js"></script>
+  <script type="module" src="/js/pages/login/login-controller.js"></script>
 </body>
 
 </html>

@@ -2,42 +2,43 @@
 <html lang="en">
 
 <head>
-  <title>__MSG_app_name__</title>
   <meta charset="utf-8" />
-  <script type="application/javascript" src="/js/browser/browser-polyfill.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="__MSG_app_description__" />
+  <title>__MSG_app_name__</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
+<body class="i18n-loading">
   <header class="header">
     <div class="container">
       <h1 class="h1 title">__MSG_app_name__</h1>
     </div>
     <div class="container">
-      <nav role="navigation" class="menu" aria-label="Main Menu">
+      <nav class="menu" aria-label="Main Menu">
         <span class="menu_links">
-          <a href="/html/secrets/list.html" class="link link--alt">__MSG_page_secrets__</a>
+          <a href="/html/secrets/list.html" class="link link--alt">__MSG_ui_title_page_secrets__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/tools/index.html" class="link link--alt">__MSG_page_tools__</a>
+          <a href="/html/tools/index.html" class="link link--alt">__MSG_ui_title_page_tools__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/login/index.html" class="link link--alt">__MSG_page_login__</a>
+          <a href="/html/about/index.html" class="link link--alt">__MSG_ui_title_page_about__</a>
         </span>
         <span class="menu_links">
-          <a href="/html/about/index.html" class="link link--alt">__MSG_page_about__</a>
+          <a href="/html/login/index.html" class="link link--alt">__MSG_ui_title_page_login__</a>
         </span>
         <span id="page_test" class="menu_links hidden">
-          <a href="/html/test/index.html" class="link link--alt link--current" aria-current="page">__MSG_page_test__</a>
+          <a href="/html/test/index.html" class="link link--alt link--current">__MSG_ui_title_page_test__</a>
         </span>
       </nav>
     </div>
   </header>
 
-  <main class="main">
+  <main id="main-content" class="main">
     <div class="form-container">
 
-      <div id="notify"></div>
+      <div id="notify" role="alert" aria-live="polite"></div>
 
       <div id="form">
         <label class="label" for="input">
@@ -51,17 +52,16 @@
         </label>
 
         <div class="center">
-          <input type="submit" class="button button_primary" id="button_test" value="Test" />
-          <input type="submit" class="button button_primary" id="button_test_all" value="Test all" />
+          <button type="button" class="button button_primary" id="button_test">Test</button>
+          <button type="button" class="button button_primary" id="button_test_all">Test all</button>
         </div>
       </div>
     </div>
 
   </main>
-  <div class="footer">__MSG_app_version__</div>
+  <footer class="footer">__MSG_app_version__</footer>
 
-  <script type="module" src="/js/common.js"></script>
-  <script type="module" src="/js/test/replicatestring.js"></script>
+  <script type="module" src="/js/pages/test/replicatestring-controller.js"></script>
 </body>
 
 </html>
